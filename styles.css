@@ -55,13 +55,22 @@ body {
     margin-left: 470px;
     padding-top: 70px;
     width: 600px;
-    padding-bottom: 200px;
+    padding-bottom: 100px;
 }
 
 .page {
-    padding: 30px 40px 30px 40px;
+    padding: 30px 50px 30px 50px;
     margin-top: 30px;
-    margin-bottom: 30px;
-    background: rgba(255,255,255,0.8);
+    margin-bottom: 100px;
+    background: rgba(255,255,255,0.85);
 
+}
+
+.page > p {
+    color: #444;
+    font-size: 16px;
+    line-height: 1.7em;
+    text-align: justify;
+    text-justify: ideographic;
+    text-shadow:1px 0 0 rgba(250,250,250,0.6);
 }
