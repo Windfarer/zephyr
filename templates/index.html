@@ -1,50 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>{{site.title}}</title>
-    <link href="css/breeze.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-</head>
-<body>
-<header class="sidebar">
-    <div class="side-header">
-        <div class="avatar-wrapper">
-            <img class="avatar" src="images/avatar.jpg">
-        </div>
-        <div class="side-info">
-            <p>{{site.title}}</p>
-        </div>
-    </div>
-    <div class="side-panel">
-        <div class="sns">
-            <div class="sns-icon">
-                <img class="icon" src="icons/home.svg" alt="index" style="height: 40px;width: 40px;margin: 0;">
-            </div>
-            <div class="sns-icon">
-                <img class="icon" src="icons/github.svg" alt="github">
-            </div>
-            <div class="sns-icon">
-                <a href="#"><img class="icon" src="icons/wordpress.svg" alt="wordpress"></a>
-            </div>
-            <div class="sns-icon">
-                <a href="#"><img class="icon" src="icons/lofter.svg" alt="github" style="height: 18px;width: 18px;margin: 11px 11px 11px 11px;"></a>
-            </div>
-        </div>
-        <ul class="side-menu">
-            <li><a href="#">页面一</a></li>
-            <li><a href="#">页面二</a></li>
-            <li><a href="#">广告位招租</a></li>
-        </ul>
-    </div>
-</header>
+{% extends "base.html" %}
+{% block main %}
 <div class="content">
     <div class="page-container">
         {%for post in pagination_posts%}
         <article class="page">
-            <h1 class="page-title"><a href="#">{{post.meta.title}}</a></h1>
+            <h1 class="page-title"><a href="{{post.url}}">{{post.title}}</a></h1>
             <div class="page-meta">
-                <span class="meta-item">DATE: {{post.formatted_date}}</span>
+                <span class="meta-item">DATE: {{post.date}}</span>
                 <span class="meta-item">AUTHOR: {{site.author}}</span>
             </div>
             <div class="page-content markdown">
@@ -54,13 +16,16 @@
         {% endfor %}
     </div>
     <div class="pagination">
+        {% if previous_page %}
         <div class="previous-page">
-            <a href="#"><img class="arrow-icon-left" src="icons/arrow-left.svg" alt="previous-page"></a>
+            <a href="{{previous_page}}"><img class="arrow-icon-left" src="/icons/arrow-left.svg" alt="previous-page"></a>
         </div>
+        {% endif %}
+        {% if next_page %}
         <div class="next-page">
-            <a href="#"><img class="arrow-icon-right" src="icons/arrow-right.svg" alt="next-page"></a>
+            <a href="{{next_page}}"><img class="arrow-icon-right" src="/icons/arrow-right.svg" alt="next-page"></a>
         </div>
+        {% endif %}
     </div>
 </div>
-</body>
-</html>
+{% endblock %}
